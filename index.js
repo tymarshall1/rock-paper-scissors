@@ -1,6 +1,6 @@
 function getComputerChoice() {
   const playChoices = ["Rock", "Paper", "Scissors"];
-  const roll = Math.floor(Math.random() * 3);
+  const roll = Math.floor(Math.random() * playChoices.length);
   return playChoices[roll];
 }
 
