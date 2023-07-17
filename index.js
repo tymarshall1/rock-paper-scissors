@@ -21,7 +21,26 @@ function playSingleRound(playerSelection, computerSelection) {
     case playerSelection.toLowerCase() === computerSelection.toLowerCase():
       return "Its a draw!";
 
+    case playerSelection.toLowerCase() !== "rock" &&
+      playerSelection.toLowerCase() !== "paper" &&
+      playerSelection.toLowerCase() !== "scissors":
+      return "Player has made an invalid choice!";
+
     default:
       return "Computer Wins!";
   }
 }
+
+function game() {
+  for (let index = 0; index < 5; index++) {
+    const computerSelection = getComputerChoice();
+    const playerSelection = prompt("Enter rock, paper, or scissors");
+    const gameWinner = playSingleRound(playerSelection, computerSelection);
+
+    console.log(
+      `Player selection: ${playerSelection}\nComputer selection: ${computerSelection}\n${gameWinner}`
+    );
+  }
+}
+
+game();
