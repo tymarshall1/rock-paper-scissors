@@ -19,6 +19,33 @@ button {
   align-items: center;
 }
 
+.header-container img {
+  width: 20rem;
+  height: 15rem;
+}
+
+.header-title-and-imgs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-title-and-imgs h1,
+p {
+  text-align: center;
+}
+
+.header-title-and-imgs h1 {
+  font-weight: 900;
+  font-size: 50px;
+}
+
+.header-title-and-imgs p {
+  font-weight: 900;
+  font-size: 20px;
+}
+
 .body-container {
   display: flex;
   align-items: center;
