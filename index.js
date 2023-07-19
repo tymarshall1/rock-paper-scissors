@@ -31,16 +31,16 @@ function playSingleRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  for (let index = 0; index < 5; index++) {
-    const computerSelection = getComputerChoice();
-    const playerSelection = prompt("Enter rock, paper, or scissors");
-    const gameWinner = playSingleRound(playerSelection, computerSelection);
+// function game() {
+//   for (let index = 0; index < 5; index++) {
+//     const computerSelection = getComputerChoice();
+//     const playerSelection = prompt("Enter rock, paper, or scissors");
+//     const gameWinner = playSingleRound(playerSelection, computerSelection);
 
-    console.log(
-      `Player selection: ${playerSelection}\nComputer selection: ${computerSelection}\n${gameWinner}`
-    );
-  }
-}
+//     console.log(
+//       `Player selection: ${playerSelection}\nComputer selection: ${computerSelection}\n${gameWinner}`
+//     );
+//   }
+// }
 
-game();
+// game();
