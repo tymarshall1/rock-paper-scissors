@@ -2,6 +2,14 @@ let playerScore = 0;
 let computerScore = 0;
 const playerScoreNum = document.querySelector("#playerScore");
 const computerScoreNum = document.querySelector("#computerScore");
+const rockBtn = document.querySelector("#rockBtn");
+rockBtn.addEventListener("click", (e) => handleWinner("Rock"));
+
+const paperBtn = document.querySelector("#paperBtn");
+paperBtn.addEventListener("click", (e) => handleWinner("Paper"));
+
+const scissorsBtn = document.querySelector("#scissorsBtn");
+scissorsBtn.addEventListener("click", (e) => handleWinner("Scissors"));
 
 function getComputerChoice() {
   const playChoices = ["Rock", "Paper", "Scissors"];
@@ -44,6 +52,40 @@ function playSingleRound(playerSelection, computerSelection) {
   }
 }
 
+function outlineRolls(playerSelection, computerSelection) {
+  computerRockBtn = document.querySelector("#computer-rock-button");
+  computerPaperBtn = document.querySelector("#computer-paper-button");
+  computerScissorsBtn = document.querySelector("#computer-scissors-button");
+
+  if (playerSelection === "Rock") {
+    rockBtn.classList.add("outline-roll");
+    paperBtn.classList.remove("outline-roll");
+    scissorsBtn.classList.remove("outline-roll");
+  } else if (playerSelection === "Paper") {
+    rockBtn.classList.remove("outline-roll");
+    paperBtn.classList.add("outline-roll");
+    scissorsBtn.classList.remove("outline-roll");
+  } else {
+    rockBtn.classList.remove("outline-roll");
+    paperBtn.classList.remove("outline-roll");
+    scissorsBtn.classList.add("outline-roll");
+  }
+
+  if (computerSelection === "Rock") {
+    computerRockBtn.classList.add("outline-roll");
+    computerPaperBtn.classList.remove("outline-roll");
+    computerScissorsBtn.classList.remove("outline-roll");
+  } else if (computerSelection === "Paper") {
+    computerRockBtn.classList.remove("outline-roll");
+    computerPaperBtn.classList.add("outline-roll");
+    computerScissorsBtn.classList.remove("outline-roll");
+  } else {
+    computerRockBtn.classList.remove("outline-roll");
+    computerPaperBtn.classList.remove("outline-roll");
+    computerScissorsBtn.classList.add("outline-roll");
+  }
+}
+
 function createWinnerDiv(winner) {
   const bodyContents = document.querySelector("#bodyContainer");
   let bodyChild = bodyContents.lastElementChild;
@@ -53,16 +95,31 @@ function createWinnerDiv(winner) {
     bodyChild = bodyContents.lastElementChild;
   }
 
+  document.querySelector("#rules").remove();
+
   const winnerDiv = document.createElement("div");
   const winnerh1 = document.createElement("h1");
   const winnerbtn = document.createElement("button");
   const winnerh3 = document.createElement("h3");
   const winnerScoreh2 = document.createElement("h2");
+  const winnerImagesDiv = document.createElement("div");
+  const winnerImage1 = document.createElement("img");
+  const winnerImage2 = document.createElement("img");
+  const winnerImage3 = document.createElement("img");
+
+  winnerImage1.src = "./images/rock.png";
+  winnerImage2.src = "./images/paper.png";
+  winnerImage3.src = "./images/scissors.png";
 
   winnerDiv.setAttribute("class", "winner-div");
+  winnerImagesDiv.setAttribute("class", "winner-images");
   winnerh1.textContent = winner;
   winnerh3.textContent = "Would you like to play again?";
   winnerbtn.textContent = "Play Again";
+  winnerbtn.setAttribute("class", "winner-button");
+  winnerImagesDiv.appendChild(winnerImage1);
+  winnerImagesDiv.appendChild(winnerImage2);
+  winnerImagesDiv.appendChild(winnerImage3);
 
   winnerScoreh2.textContent = `Final Score - Player: ${playerScore} Computer: ${computerScore}`;
 
@@ -72,6 +129,7 @@ function createWinnerDiv(winner) {
   winnerDiv.appendChild(winnerScoreh2);
   winnerDiv.appendChild(winnerh3);
   winnerDiv.appendChild(winnerbtn);
+  winnerDiv.appendChild(winnerImagesDiv);
 
   bodyContents.appendChild(winnerDiv);
 }
@@ -79,6 +137,8 @@ function createWinnerDiv(winner) {
 function handleWinner(playerSelection) {
   const computerSelection = getComputerChoice();
   const winner = playSingleRound(playerSelection, computerSelection);
+
+  outlineRolls(playerSelection, computerSelection);
 
   document.querySelector(
     "#playerLastRoll"
@@ -96,12 +156,3 @@ function handleWinner(playerSelection) {
     return;
   }
 }
-
-const rockBtn = document.querySelector("#rockBtn");
-rockBtn.addEventListener("click", (e) => handleWinner("Rock"));
-
-const paperBtn = document.querySelector("#paperBtn");
-paperBtn.addEventListener("click", (e) => handleWinner("Paper"));
-
-const scissorsBtn = document.querySelector("#scissorsBtn");
-scissorsBtn.addEventListener("click", (e) => handleWinner("Scissors"));

@@ -21,7 +21,7 @@
         />
       </div>
 
-      <p>First to 5 wins. Can you beat the computer?</p>
+      <p id="rules">First to 5 wins. Can you beat the computer?</p>
     </div>
     <div class="body-container" id="bodyContainer">
       <div class="player-box">
@@ -44,9 +44,13 @@
         <h2>Computer</h2>
         <p id="computerLastRoll"></p>
         <div class="buttons-container-computer">
-          <button disabled><img src="images/rock.png" alt="rock" /></button>
-          <button disabled><img src="images/paper.png" alt="paper" /></button>
-          <button disabled>
+          <button id="computer-rock-button" disabled>
+            <img src="images/rock.png" alt="rock" />
+          </button>
+          <button id="computer-paper-button" disabled>
+            <img src="images/paper.png" alt="paper" />
+          </button>
+          <button id="computer-scissors-button" disabled>
             <img src="images/scissors.png" alt="scissors" />
           </button>
         </div>
