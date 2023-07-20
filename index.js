@@ -44,38 +44,64 @@ function playSingleRound(playerSelection, computerSelection) {
   }
 }
 
+function createWinnerDiv(winner) {
+  const bodyContents = document.querySelector("#bodyContainer");
+  let bodyChild = bodyContents.lastElementChild;
+
+  while (bodyChild) {
+    bodyContents.removeChild(bodyChild);
+    bodyChild = bodyContents.lastElementChild;
+  }
+
+  const winnerDiv = document.createElement("div");
+  const winnerh1 = document.createElement("h1");
+  const winnerbtn = document.createElement("button");
+  const winnerh3 = document.createElement("h3");
+  const winnerScoreh2 = document.createElement("h2");
+
+  winnerDiv.setAttribute("class", "winner-div");
+  winnerh1.textContent = winner;
+  winnerh3.textContent = "Would you like to play again?";
+  winnerbtn.textContent = "Play Again";
+
+  winnerScoreh2.textContent = `Final Score - Player: ${playerScore} Computer: ${computerScore}`;
+
+  winnerbtn.addEventListener("click", (e) => location.reload());
+
+  winnerDiv.appendChild(winnerh1);
+  winnerDiv.appendChild(winnerScoreh2);
+  winnerDiv.appendChild(winnerh3);
+  winnerDiv.appendChild(winnerbtn);
+
+  bodyContents.appendChild(winnerDiv);
+}
+
 function handleWinner(playerSelection) {
   const computerSelection = getComputerChoice();
   const winner = playSingleRound(playerSelection, computerSelection);
 
-  const bodyContents = document.querySelector("#bodyContainer");
-  let bodyChild = bodyContents.lastElementChild;
+  document.querySelector(
+    "#playerLastRoll"
+  ).textContent = `Last roll: ${playerSelection}`;
 
-  console.log(playerSelection, computerSelection);
-  console.log(winner);
+  document.querySelector(
+    "#computerLastRoll"
+  ).textContent = `Last roll: ${computerSelection}`;
 
   if (playerScore > 4) {
-    console.log("player wins game");
-    while (bodyChild) {
-      bodyContents.removeChild(bodyChild);
-      bodyChild = bodyContents.lastElementChild;
-    }
+    createWinnerDiv(winner);
     return;
   } else if (computerScore > 4) {
-    console.log("computer wins game");
-    while (bodyChild) {
-      bodyContents.removeChild(bodyChild);
-      bodyChild = bodyContents.lastElementChild;
-    }
+    createWinnerDiv(winner);
     return;
   }
 }
 
 const rockBtn = document.querySelector("#rockBtn");
-rockBtn.addEventListener("click", (e) => handleWinner("rock"));
+rockBtn.addEventListener("click", (e) => handleWinner("Rock"));
 
 const paperBtn = document.querySelector("#paperBtn");
-paperBtn.addEventListener("click", (e) => handleWinner("paper"));
+paperBtn.addEventListener("click", (e) => handleWinner("Paper"));
 
 const scissorsBtn = document.querySelector("#scissorsBtn");
-scissorsBtn.addEventListener("click", (e) => handleWinner("scissors"));
+scissorsBtn.addEventListener("click", (e) => handleWinner("Scissors"));
