@@ -140,14 +140,6 @@ function handleWinner(playerSelection) {
 
   outlineRolls(playerSelection, computerSelection);
 
-  document.querySelector(
-    "#playerLastRoll"
-  ).textContent = `Last roll: ${playerSelection}`;
-
-  document.querySelector(
-    "#computerLastRoll"
-  ).textContent = `Last roll: ${computerSelection}`;
-
   if (playerScore > 4) {
     createWinnerDiv(winner);
     return;
