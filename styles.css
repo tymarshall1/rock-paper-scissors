@@ -5,12 +5,15 @@ body {
   flex-direction: column;
   gap: 1rem;
   margin: 0;
+  height: 100vh;
 }
 
 button {
   padding: 1rem 2rem;
   width: 10rem;
+  /* height: 5rem; */
   border-radius: 2rem;
+  background-color: white;
   border: none;
 }
 
@@ -55,7 +58,7 @@ p {
   height: auto;
   background-color: rgb(101, 101, 148);
   gap: 2rem;
-  padding: 5rem 1rem;
+  padding: 6rem 1rem;
   flex-wrap: wrap;
 }
 
@@ -66,10 +69,6 @@ p {
   align-items: center;
   justify-content: center;
   border: 2px solid black;
-  height: auto;
-  min-width: 10rem;
-  min-height: 10rem;
-  height: 25rem;
   flex: 1;
   margin: 0 1em;
   gap: 2rem;
@@ -83,4 +82,10 @@ p {
   gap: 2rem;
   flex-wrap: wrap;
   padding: 1rem;
+}
+
+.buttons-container img {
+  height: 100px;
+  width: 100px;
+  border-radius: 5px;
 }

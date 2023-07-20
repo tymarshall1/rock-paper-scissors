@@ -23,22 +23,32 @@
 
       <p>First to 5 wins. Can you beat the computer?</p>
     </div>
-    <div class="body-container">
+    <div class="body-container" id="bodyContainer">
       <div class="player-box">
         <h2>Player</h2>
         <div class="buttons-container">
-          <button>Rock</button>
-          <button>Paper</button>
-          <button>Scissors</button>
+          <button id="rockBtn">
+            <img src="images/rock.png" alt="rock" />
+          </button>
+          <button id="paperBtn">
+            <img src="images/paper.png" alt="paper" />
+          </button>
+          <button id="scissorsBtn">
+            <img src="images/scissors.png" alt="scissors" />
+          </button>
         </div>
+        <h3 id="playerScore">Player Score: 0</h3>
       </div>
       <div class="computer-box">
         <h2>Computer</h2>
         <div class="buttons-container">
-          <button>Rock</button>
-          <button>Paper</button>
-          <button>Scissors</button>
+          <button disabled><img src="images/rock.png" alt="rock" /></button>
+          <button disabled><img src="images/paper.png" alt="paper" /></button>
+          <button disabled>
+            <img src="images/scissors.png" alt="scissors" />
+          </button>
         </div>
+        <h3 id="computerScore">Computer Score: 0</h3>
       </div>
     </div>
   </body>

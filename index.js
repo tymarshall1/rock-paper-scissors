@@ -1,3 +1,8 @@
+let playerScore = 0;
+let computerScore = 0;
+const playerScoreNum = document.querySelector("#playerScore");
+const computerScoreNum = document.querySelector("#computerScore");
+
 function getComputerChoice() {
   const playChoices = ["Rock", "Paper", "Scissors"];
   const roll = Math.floor(Math.random() * playChoices.length);
@@ -8,14 +13,20 @@ function playSingleRound(playerSelection, computerSelection) {
   switch (true) {
     case playerSelection.toLowerCase() === "rock" &&
       computerSelection.toLowerCase() === "scissors":
+      playerScore++;
+      playerScoreNum.textContent = `Player Score: ${playerScore}`;
       return "Player Wins!";
 
     case playerSelection.toLowerCase() === "paper" &&
       computerSelection.toLowerCase() === "rock":
+      playerScore++;
+      playerScoreNum.textContent = `Player Score: ${playerScore}`;
       return "Player Wins!";
 
     case playerSelection.toLowerCase() === "scissors" &&
       computerSelection.toLowerCase() === "paper":
+      playerScore++;
+      playerScoreNum.textContent = `Player Score: ${playerScore}`;
       return "Player Wins!";
 
     case playerSelection.toLowerCase() === computerSelection.toLowerCase():
@@ -27,27 +38,44 @@ function playSingleRound(playerSelection, computerSelection) {
       return "Player has made an invalid choice!";
 
     default:
+      computerScore++;
+      computerScoreNum.textContent = `Computer Score: ${computerScore}`;
       return "Computer Wins!";
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
+function handleWinner(playerSelection) {
+  const computerSelection = getComputerChoice();
+  const winner = playSingleRound(playerSelection, computerSelection);
 
-  while (playerScore <= 5 || computerScore <= 5) {}
+  const bodyContents = document.querySelector("#bodyContainer");
+  let bodyChild = bodyContents.lastElementChild;
+
+  console.log(playerSelection, computerSelection);
+  console.log(winner);
+
+  if (playerScore > 4) {
+    console.log("player wins game");
+    while (bodyChild) {
+      bodyContents.removeChild(bodyChild);
+      bodyChild = bodyContents.lastElementChild;
+    }
+    return;
+  } else if (computerScore > 4) {
+    console.log("computer wins game");
+    while (bodyChild) {
+      bodyContents.removeChild(bodyChild);
+      bodyChild = bodyContents.lastElementChild;
+    }
+    return;
+  }
 }
 
-// function game() {
-//   for (let index = 0; index < 5; index++) {
-//     const computerSelection = getComputerChoice();
-//     const playerSelection = prompt("Enter rock, paper, or scissors");
-//     const gameWinner = playSingleRound(playerSelection, computerSelection);
+const rockBtn = document.querySelector("#rockBtn");
+rockBtn.addEventListener("click", (e) => handleWinner("rock"));
 
-//     console.log(
-//       `Player selection: ${playerSelection}\nComputer selection: ${computerSelection}\n${gameWinner}`
-//     );
-//   }
-// }
+const paperBtn = document.querySelector("#paperBtn");
+paperBtn.addEventListener("click", (e) => handleWinner("paper"));
 
-// game();
+const scissorsBtn = document.querySelector("#scissorsBtn");
+scissorsBtn.addEventListener("click", (e) => handleWinner("scissors"));
