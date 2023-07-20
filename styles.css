@@ -15,6 +15,7 @@ button {
   border-radius: 2rem;
   background-color: white;
   border: none;
+  border: 3px solid rgb(101, 101, 148);
 }
 
 .header-container {
@@ -76,7 +77,8 @@ p {
   padding: 0 0 3rem;
 }
 
-.buttons-container {
+.buttons-container-player,
+.buttons-container-computer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,11 +86,15 @@ p {
   flex-wrap: wrap;
   padding: 1rem;
 }
-
-.buttons-container img {
+.buttons-container-player img,
+.buttons-container-computer img {
   height: 100px;
   width: 100px;
   border-radius: 5px;
+}
+
+.buttons-container-player button:hover {
+  border: 3px solid black;
 }
 
 .winner-div {
